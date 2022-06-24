@@ -14,10 +14,6 @@ const breakpoints = {
 
 const colors = {
   ...chakraTheme.colors,
-  brand: {
-    900: "#010001",
-    800: "#0e0e0e",
-  },
   teal: {
     350: "#00ADB5",
   },

@@ -1,16 +1,14 @@
+import { Box, Flex, Heading, Stack } from "@chakra-ui/react";
 import { NextPage } from "next";
 import Head from "next/head";
-
-import { Box, Flex, Heading, Stack } from "@chakra-ui/react";
-
+import { RegisterForm } from "../components/Forms/RegisterForm";
 import { ThemeButton } from "../components/ThemeButton";
-import { LoginForm } from "../components/Forms/LoginForm";
 
-const Login: NextPage = () => {
+const Register: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Conectar ao blog</title>
+        <title>Registrar-se no blog</title>
       </Head>
 
       <Flex
@@ -36,7 +34,7 @@ const Login: NextPage = () => {
           alignItems="center"
           justifyContent={{ base: "center", lg: "flex-start" }}
         >
-          <LoginForm />
+          <RegisterForm />
         </Stack>
       </Flex>
 
@@ -45,4 +43,4 @@ const Login: NextPage = () => {
   );
 };
 
-export default Login;
+export default Register;
