@@ -10,7 +10,7 @@ const Login: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Conectar ao blog</title>
+        <title>Conectar-se ao blog</title>
       </Head>
 
       <Flex
@@ -21,12 +21,7 @@ const Login: NextPage = () => {
         alignItems={"center"}
         justifyContent={"center"}
       >
-        <Box
-          p={4}
-          pl={{ base: 4, lg: 56 }}
-          w={{ base: "100vw", lg: "45vw" }}
-          textAlign={{ base: "center", lg: "start" }}
-        >
+        <Box p={4} w={{ base: "100vw", lg: "45vw" }} textAlign={"center"}>
           <Heading fontSize={"8xl"}>BLoUG!</Heading>
         </Box>
 

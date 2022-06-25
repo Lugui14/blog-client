@@ -42,7 +42,7 @@ export const RegisterForm = () => {
             _hover={{ color: "gray.500" }}
           >
             {" "}
-            <BiArrowBack /> Voltar{" "}
+            <BiArrowBack /> Login{" "}
           </Link>
         </NextLink>
 
@@ -55,6 +55,7 @@ export const RegisterForm = () => {
             id="name"
             type="text"
             maxLength={80}
+            color={"gray.500"}
             placeholder="Digite seu Nome:"
             _placeholder={{ color: "gray.500" }}
           />
@@ -68,6 +69,7 @@ export const RegisterForm = () => {
             bg={inputBg}
             id="email"
             type="email"
+            color={"gray.500"}
             placeholder="Digite seu email:"
             _placeholder={{ color: "gray.500" }}
           />
@@ -82,6 +84,7 @@ export const RegisterForm = () => {
             id="pwd"
             type="password"
             placeholder="Digite sua senha:"
+            color={"gray.500"}
             _placeholder={{ color: "gray.500" }}
           />
         </FormControl>

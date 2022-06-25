@@ -10,6 +10,7 @@ import {
   useColorModeValue,
   Link,
 } from "@chakra-ui/react";
+import { BiArrowBack } from "react-icons/bi";
 
 export const LoginForm = () => {
   const inputBg = useColorModeValue("white", "white");
@@ -31,6 +32,22 @@ export const LoginForm = () => {
         flexDir={"column"}
         gap={2}
       >
+        <NextLink href="/" passHref>
+          <Link
+            display={"flex"}
+            alignItems={"center"}
+            gap={2}
+            color={"black"}
+            p={2}
+            fontSize={24}
+            maxW={"fit-content"}
+            _hover={{ color: "gray.500" }}
+          >
+            {" "}
+            <BiArrowBack /> Home{" "}
+          </Link>
+        </NextLink>
+
         <FormControl mb={4} isRequired>
           <FormLabel color={labelColor} htmlFor="email">
             Email
@@ -39,6 +56,7 @@ export const LoginForm = () => {
             bg={inputBg}
             id="email"
             type="email"
+            color={"gray.500"}
             placeholder="Digite seu email:"
             _placeholder={{ color: "gray.500" }}
           />
@@ -52,6 +70,7 @@ export const LoginForm = () => {
             bg={inputBg}
             id="pwd"
             type="password"
+            color={"gray.500"}
             placeholder="Digite sua senha:"
             _placeholder={{ color: "gray.500" }}
           />
