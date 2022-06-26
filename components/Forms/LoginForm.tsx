@@ -1,18 +1,26 @@
-import React from "react";
+import { useState } from "react";
 import NextLink from "next/link";
 
+import { BiArrowBack } from "react-icons/bi";
 import {
   Flex,
   FormControl,
   FormLabel,
-  Input,
   Text,
   useColorModeValue,
   Link,
+  Button,
 } from "@chakra-ui/react";
-import { BiArrowBack } from "react-icons/bi";
+import { Input } from "./Input";
+
+type FormData = {
+  email: string;
+  pwd: string;
+};
 
 export const LoginForm = () => {
+  const [alert, setAlert] = useState("");
+
   const inputBg = useColorModeValue("white", "white");
   const labelColor = useColorModeValue("gray.900", "gray.900");
   const formBg = useColorModeValue("gray.200", "gray.200");
@@ -20,6 +28,15 @@ export const LoginForm = () => {
     "0 2px .8em rgba(0, 0, 0, .3)",
     "0 2px .8em rgba(255, 255, 255, .15)"
   );
+
+  const handleSubmit = ({ email, pwd }: FormData) => {
+    if (pwd.length < 6) {
+      setAlert("Senha deve ter pelo menos 6 caracteres.");
+      return;
+    }
+
+    console.log(email, pwd);
+  };
 
   return (
     <form action="submit">
@@ -44,7 +61,7 @@ export const LoginForm = () => {
             _hover={{ color: "gray.500" }}
           >
             {" "}
-            <BiArrowBack /> Home{" "}
+            <BiArrowBack /> Início{" "}
           </Link>
         </NextLink>
 
@@ -54,7 +71,7 @@ export const LoginForm = () => {
           </FormLabel>
           <Input
             bg={inputBg}
-            id="email"
+            name="email"
             type="email"
             color={"gray.500"}
             placeholder="Digite seu email:"
@@ -68,7 +85,7 @@ export const LoginForm = () => {
           </FormLabel>
           <Input
             bg={inputBg}
-            id="pwd"
+            name="pwd"
             type="password"
             color={"gray.500"}
             placeholder="Digite sua senha:"
@@ -83,7 +100,7 @@ export const LoginForm = () => {
           </NextLink>
         </Text>
 
-        <Input
+        <Button
           mt={"60px"}
           type="submit"
           bg={"teal.350"}
@@ -95,10 +112,11 @@ export const LoginForm = () => {
           fontWeight={"bold"}
           letterSpacing={1.5}
           fontSize={"lg"}
-          value={"Conectar"}
           cursor={"pointer"}
           _hover={{ bg: "teal.300" }}
-        />
+        >
+          Conectar
+        </Button>
       </Flex>
     </form>
   );

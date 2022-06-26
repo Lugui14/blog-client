@@ -16,8 +16,6 @@ import { ThemeButton } from "../components/ThemeButton";
 import { useState } from "react";
 
 const Home: NextPage = () => {
-  const [alertOpened, setAlertOpened] = useState(false);
-
   return (
     <>
       <Head>
