@@ -70,8 +70,9 @@ export const LoginForm = () => {
             Email
           </FormLabel>
           <Input
-            bg={inputBg}
             name="email"
+            bg={inputBg}
+            id="email"
             type="email"
             color={"gray.500"}
             placeholder="Digite seu email:"

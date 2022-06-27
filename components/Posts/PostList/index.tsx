@@ -59,6 +59,7 @@ export const PostList = () => {
       >
         {messages.map((message) => (
           <PostCard
+            key={message.text}
             text={message.text}
             username={message.user.name}
             useremail={message.user.email}

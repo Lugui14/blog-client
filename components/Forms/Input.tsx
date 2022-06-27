@@ -2,14 +2,16 @@ import { Input as ChakraInput, InputProps } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 import { useField } from "@unform/core";
 
-interface IInputProps extends InputProps {
+interface IProps {
   name: string;
 }
+
+type IInputProps = InputProps & IProps;
 
 export const Input = ({ name, ...rest }: IInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { fieldName, registerField, defaultValue, error } = useField(name);
+  const { fieldName, registerField, defaultValue } = useField(name);
 
   useEffect(() => {
     registerField({

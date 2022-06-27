@@ -100,6 +100,7 @@ export const RegisterForm = () => {
             <Input
               bg={inputBg}
               name="email"
+              id="email"
               type="email"
               color={"gray.500"}
               placeholder="Digite seu email:"
