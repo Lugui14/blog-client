@@ -9,7 +9,6 @@ interface IPostProps {
 export const PostCard = ({ text, username, useremail }: IPostProps) => {
   return (
     <VStack
-      maxW={"80%"}
       alignItems={"flex-start"}
       rounded={8}
       borderLeft={"4px solid #00ADB5"}

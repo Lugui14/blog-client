@@ -1,5 +1,4 @@
-import { Button, Flex, Textarea, VStack } from "@chakra-ui/react";
-import { IoSend } from "react-icons/io5";
+import { Button, Flex, VStack } from "@chakra-ui/react";
 import { PostCard } from "../PostCard";
 
 interface IMessage {
@@ -43,20 +42,8 @@ const messages: IMessage[] = [
 
 export const PostList = () => {
   return (
-    <Flex alignItems={"center"} maxH={"80vh"} flexDir={"column"}>
-      <VStack
-        css={{
-          "&::-webkit-scrollbar": {
-            width: "4px",
-          },
-          "&::-webkit-scrollbar-thumb": {
-            backgroundColor: "black",
-            borderRadius: "24px",
-          },
-        }}
-        overflowY={"auto"}
-        gap={8}
-      >
+    <Flex alignItems={"center"} flexDir={"column"} p={4}>
+      <VStack overflowY={"auto"} gap={4}>
         {messages.map((message) => (
           <PostCard
             key={message.text}
@@ -69,26 +56,6 @@ export const PostList = () => {
           Mostrar Mais
         </Button>
       </VStack>
-      <Textarea
-        mt={6}
-        w={"80%"}
-        maxW={"xl"}
-        border={"2px solid black"}
-        resize={"none"}
-        p={4}
-        h={56}
-        placeholder={"Digite sua mensagem aqui."}
-      />
-      <Button
-        gap={4}
-        w={"80%"}
-        p={4}
-        mb={4}
-        bg={"teal.350"}
-        _hover={{ bg: "teal.300" }}
-      >
-        Enviar <IoSend />
-      </Button>
     </Flex>
   );
 };
