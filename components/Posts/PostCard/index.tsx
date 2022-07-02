@@ -16,7 +16,12 @@ export const PostCard = ({ text, username, useremail }: IPostProps) => {
       bg={"rgba(203,213,224, 0.4)"}
       p={8}
     >
-      <Flex alignItems={"center"} mb={4} gap={4}>
+      <Flex
+        alignItems={{ base: "flex-start", lg: "center" }}
+        flexDir={{ base: "column", lg: "row" }}
+        mb={4}
+        gap={{ base: 2, lg: 4 }}
+      >
         <Text fontSize={16} fontWeight={"bold"}>
           {username}
         </Text>

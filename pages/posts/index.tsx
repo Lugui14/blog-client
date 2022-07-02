@@ -10,6 +10,7 @@ import {
   Grid,
   GridItem,
   useMediaQuery,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { Aside } from "../../components/Profile/Aside";
 import { ThemeButton } from "../../components/ThemeButton";
@@ -42,7 +43,7 @@ const Posts: NextPage = () => {
           <GridItem
             p={12}
             maxH={"105vh"}
-            bg={"blackAlpha.400"}
+            bg={useColorModeValue("blackAlpha.50", "blackAlpha.400")}
             rounded={12}
             area={"aside"}
           >
@@ -51,10 +52,20 @@ const Posts: NextPage = () => {
               email={"zanelallopes9977@gmail.com"}
             />
           </GridItem>
-          <GridItem bg={"blackAlpha.400"} rounded={12} p={4} area={"header"}>
+          <GridItem
+            bg={useColorModeValue("blackAlpha.50", "blackAlpha.400")}
+            rounded={12}
+            p={4}
+            area={"header"}
+          >
             <Header />
           </GridItem>
-          <GridItem bg={"blackAlpha.400"} rounded={12} p={6} area={"main"}>
+          <GridItem
+            bg={useColorModeValue("blackAlpha.50", "blackAlpha.400")}
+            rounded={12}
+            p={6}
+            area={"main"}
+          >
             <PostList />
           </GridItem>
         </Grid>
@@ -62,7 +73,7 @@ const Posts: NextPage = () => {
         <>
           <Button
             onClick={() => setIsAsideOpened(!isAsideOpened)}
-            position={"absolute"}
+            position={"fixed"}
             top={4}
             left={!isAsideOpened ? "75vw" : 4}
           >
@@ -75,7 +86,8 @@ const Posts: NextPage = () => {
               position={"fixed"}
               w={"70vw"}
               h={"100vh"}
-              bg={"gray.800"}
+              bg={useColorModeValue("gray.200", "gray.800")}
+              borderRight={"2px solid #00ADB5"}
             >
               <Aside
                 name={"Luiz Guilherme Zanella Lopes"}
@@ -90,6 +102,8 @@ const Posts: NextPage = () => {
             alignItems={"center"}
             pt={16}
           >
+            <Header />
+
             <PostList />
           </Flex>
         </>

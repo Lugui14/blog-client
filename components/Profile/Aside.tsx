@@ -1,4 +1,13 @@
-import { Button, Center, Flex, Heading, Text, VStack } from "@chakra-ui/react";
+import {
+  Button,
+  Center,
+  Flex,
+  Heading,
+  Text,
+  useDisclosure,
+  VStack,
+} from "@chakra-ui/react";
+import { PostModal } from "../Posts/PostModal";
 
 interface IAsideProps {
   name: string;
@@ -29,42 +38,49 @@ const users = [
 ];
 
 export const Aside = ({ name, email }: IAsideProps) => {
+  const { onOpen, isOpen, onClose } = useDisclosure();
+
   return (
-    <Center flexDir={"column"} maxH={"85vh"} p={4}>
-      <Heading textAlign={"center"} mb={8}>
-        {name}
-      </Heading>
-      <Text mb={12} textAlign={"center"}>
-        {email}
-      </Text>
+    <>
+      <PostModal isOpen={isOpen} onClose={onClose} onOpen={onOpen} />
 
-      <Button
-        mb={8}
-        p={4}
-        w={"100%"}
-        bg={"teal.350"}
-        _hover={{ bg: "teal.300" }}
-      >
-        {" "}
-        Criar Post{" "}
-      </Button>
+      <Center flexDir={"column"} maxH={"85vh"} p={4}>
+        <Heading textAlign={"center"} mb={8}>
+          {name}
+        </Heading>
+        <Text mb={12} textAlign={"center"}>
+          {email}
+        </Text>
 
-      <VStack>
-        <Text fontSize={18}>Novos Usuários</Text>
-        {users.map((user) => (
-          <Flex
-            w={"150%"}
-            borderTop={"1px solid white"}
-            flexDir={"column"}
-            p={2}
-            fontSize={16}
-            key={user.name}
-          >
-            <Text>{user.name}</Text>
-            <Text opacity={"70%"}>{user.email}</Text>
-          </Flex>
-        ))}
-      </VStack>
-    </Center>
+        <Button
+          mb={8}
+          p={4}
+          w={"100%"}
+          bg={"teal.350"}
+          _hover={{ bg: "teal.300" }}
+          onClick={onOpen}
+        >
+          {" "}
+          Criar Post{" "}
+        </Button>
+
+        <VStack w={"100%"}>
+          <Text fontSize={18}>Novos Usuários</Text>
+          {users.map((user) => (
+            <Flex
+              w={"100%"}
+              borderTop={"1px solid white"}
+              flexDir={"column"}
+              p={2}
+              fontSize={16}
+              key={user.name}
+            >
+              <Text>{user.name}</Text>
+              <Text opacity={"70%"}>{user.email}</Text>
+            </Flex>
+          ))}
+        </VStack>
+      </Center>
+    </>
   );
 };
