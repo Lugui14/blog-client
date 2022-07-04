@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { NextPage } from "next";
 import Head from "next/head";
-import { useState } from "react";
 
 import { BsArrowBarLeft, BsArrowBarRight } from "react-icons/bs";
 import {

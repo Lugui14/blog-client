@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { Input } from "./Input";
 import { Alert } from "../Alert";
+import { api } from "../../services/api";
 
 type FormData = {
   name: string;
@@ -32,13 +33,23 @@ export const RegisterForm = () => {
     "0 2px .8em rgba(255, 255, 255, .15)"
   );
 
-  const handleSubmit = ({ name, email, pwd }: FormData) => {
+  const handleSubmit = async ({ name, email, pwd }: FormData) => {
     if (pwd.length < 6) {
       setAlert("Senha deve ter pelo menos 6 caracteres.");
       return;
     }
 
-    console.log(name, email, pwd);
+    try {
+      const response = await api.post("users", {
+        name,
+        email,
+        password: pwd,
+      });
+
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
