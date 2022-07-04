@@ -1,6 +1,7 @@
 import NextLink from "next/link";
 import { useState } from "react";
 
+import { AxiosError } from "axios";
 import { Form } from "@unform/web";
 import { BiArrowBack } from "react-icons/bi";
 import { MdError } from "react-icons/md";
@@ -24,6 +25,7 @@ type FormData = {
 
 export const RegisterForm = () => {
   const [alert, setAlert] = useState("");
+  const [alertColor, setAlertColor] = useState("red.400");
 
   const inputBg = useColorModeValue("white", "white");
   const labelColor = useColorModeValue("gray.900", "gray.900");
@@ -39,17 +41,19 @@ export const RegisterForm = () => {
       return;
     }
 
-    try {
-      const response = await api.post("users", {
+    await api
+      .post("users", {
         name,
         email,
         password: pwd,
+      })
+      .then((response) => {
+        setAlert("Conta Criada.");
+        setAlertColor("green.300");
+      })
+      .catch((err) => {
+        console.log(err.response.data.message);
       });
-
-      console.log(response);
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   return (
@@ -58,14 +62,14 @@ export const RegisterForm = () => {
         <Alert
           icon={MdError}
           message={alert}
-          color={"red.400"}
+          color={alertColor}
           onClick={() => setAlert("")}
         />
       )}
 
       <Form onSubmit={handleSubmit}>
         <Flex
-          minW={96}
+          minW={{ base: "80vw", lg: 96 }}
           p={8}
           rounded={12}
           boxShadow={shadow}
